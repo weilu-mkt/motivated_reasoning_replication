@@ -15,6 +15,18 @@ eststo: reghdfe acc_citation c.minority if Divided==1, a(i.circuityear i.geniss1
 eststo: reghdfe dissentvote c.minority if Divided==1, a(i.circuityear i.geniss1) vce(cluster id) noconst
 esttab using table2.tex, label b(3) se(3) r2(3) nogaps star(* 0.1 ** 0.05 *** 0.01) replace
 
+** Robustness check **
+eststo clear
+eststo: reghdfe acc_text c.Divided, a(i.circuityear i.geniss1 i.id) vce(cluster id) noconst
+eststo: reghdfe acc_citation c.Divided, a(i.circuityear i.geniss1 i.id) vce(cluster id) noconst
+eststo: reghdfe dissentvote c.Divided, a(i.circuityear i.geniss1 i.id) vce(cluster id) noconst
+esttab using table1a.tex, label b(3) se(3) r2(3) nogaps star(* 0.1 ** 0.05 *** 0.01) replace
+
+eststo clear
+eststo: reghdfe acc_text c.minority if Divided==1, a(i.circuityear i.geniss1 i.id) vce(cluster id) noconst
+eststo: reghdfe acc_citation c.minority if Divided==1, a(i.circuityear i.geniss1 i.id) vce(cluster id) noconst
+eststo: reghdfe dissentvote c.minority if Divided==1, a(i.circuityear i.geniss1 i.id) vce(cluster id) noconst
+esttab using table2a.tex, label b(3) se(3) r2(3) nogaps star(* 0.1 ** 0.05 *** 0.01) replace
 
 ********* Electoral Cycles *********
 eststo clear
